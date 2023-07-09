@@ -1,4 +1,6 @@
-const BASE_URL = 'http://127.0.0.1:3000';
+import { API_HOST } from "../config/config";
+
+const BASE_URL = API_HOST;
 
 export async function fetchHistoricalPlace(qrCode) {
   const response = await fetch(`${BASE_URL}/histPlaces/${qrCode}`);

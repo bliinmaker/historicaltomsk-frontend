@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { getHistPlaces } from '../../api/histPlace'
-import './Feature.scss'
+import './AllHistPlaces.scss'
 import { API_HOST } from '../../config/config'
 
-export const Feature = () => {
+export const AllHistPlaces = () => {
 	const [histPlaces, setHistPlaces] = useState([])
 	useEffect(() => {
 		getHistPlaces({}).then(resp => {
@@ -17,7 +17,6 @@ export const Feature = () => {
 		<section id='featured' className='py-4'>
 			<div className='container'>
 				<div className='title-wrap'>
-					<span className='sm-title'>узнай больше про</span>
 					<h2 className='lg-title'>Самые популярные места Томска</h2>
 				</div>
 				<div className='featured-row'>

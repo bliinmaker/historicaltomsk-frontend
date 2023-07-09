@@ -1,7 +1,7 @@
 import axios from 'axios'
-// import { API_HOST } from '../config/config';
+import { API_HOST } from '../config/config';
 
-axios.defaults.baseURL = 'http://127.0.0.1:3000'
+axios.defaults.baseURL = API_HOST
 
 export const getHistPlaces = ({ title, area }) => {
 	let params = new URLSearchParams();

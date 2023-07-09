@@ -5,6 +5,7 @@ import { getHistPlace } from '../../api/histPlace'
 import { getHistPlaceRating, rateHistPlace } from '../../api/rateHistPlace'
 import { Comments } from '../comments/Comments'
 import './HistPlace.scss'
+import { API_HOST } from '../../config/config'
 
 export const HistPlace = () => {
 	const [histPlace, setHistPlace] = useState(null)
@@ -44,10 +45,10 @@ export const HistPlace = () => {
 	}
 
 	return (
-		<section className='histPlace' id='excursion'>
+		<section className='histPlace container' id='histPlace'>
 			<div className='histPlace-wrap'>
 				<div className='photo-container'>
-					<img src='https://placekitten.com/640/360' className='image' />
+					<img src={API_HOST + '/' + histPlace.image} className='image' />
 				</div>
 				<div className='content'>
 					<div className='stars'>
@@ -57,11 +58,12 @@ export const HistPlace = () => {
 						/>
 					</div>
 					<h3>{histPlace.title}</h3>
+					<span>{histPlace.area}</span>
 					<p>{histPlace.description}</p>
 				</div>
 			</div>
 			{histPlace && (
-				<Comments excursionId={histPlaceId} comments={histPlace.comments} />
+				<Comments histPlaceId={histPlaceId} comments={histPlace.comments} />
 			)}
 		</section>
 	)

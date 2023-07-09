@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { API_HOST } from '../config/config'
 
-axios.defaults.baseURL = 'http://127.0.0.1:3000'
+axios.defaults.baseURL = API_HOST
 
 
 export const createComment = (histPlaceId, { nickName, message, image }) => {

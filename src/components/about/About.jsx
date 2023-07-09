@@ -1,3 +1,6 @@
+import './About.scss'
+import aboutImg from '../../assets/tg_image_4242443394.jpeg'
+
 export const About = () => {
 	return (
 		<section id='about' className='py-4'>
@@ -10,7 +13,7 @@ export const About = () => {
 				<div className='about-row'>
 					<div className='about-left my-2'>
 						<img
-							src='../../assets/tg_image_4242443394.jpeg'
+							src={aboutImg}
 							alt='about img'
 						></img>
 					</div>

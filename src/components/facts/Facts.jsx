@@ -1,3 +1,5 @@
+import './Facts.scss'
+
 export const Facts = () => {
  return (
     <section id="facts" className="py-4 flex">

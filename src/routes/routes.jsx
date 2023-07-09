@@ -4,6 +4,7 @@ import { AboutPage } from '../pages/AboutPage'
 import { HistPlacePage } from '../pages/HistPlacePage'
 import Home from '../pages/Home'
 import { PageNotFound } from '../pages/PageNotFound'
+import { AllHistPlacesPage } from '../pages/AllHistPlacesPage'
 
 export const appRoutes = [
 	{
@@ -29,6 +30,10 @@ export const appRoutes = [
 			{
 				path: '/histPlace/:histPlaceId',
 				element: <HistPlacePage />,
+			},
+			{
+				path: '/AllHistPlacesPage',
+				element: <AllHistPlacesPage />,
 			},
 		],
 	},
