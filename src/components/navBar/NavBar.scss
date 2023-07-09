@@ -1,0 +1,97 @@
+.navbar {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: #000;
+	padding: 1rem 0;
+	z-index: 999;
+}
+.navbar .container {
+	justify-content: space-between;
+}
+.site-brand {
+	color: white;
+	font-size: 2.4rem;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+	opacity: 0.95;
+}
+.site-brand span {
+	font-weight: 300;
+}
+#navbar-show-btn {
+	background: transparent;
+	color: white;
+	font-size: 2rem;
+	opacity: 0.9;
+	transition: var(--trans);
+	border: none;
+}
+#navbar-show-btn:hover {
+	opacity: 1;
+}
+
+/* navbar side-menu */
+#navbar-collapse {
+	background-color: var(--green);
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 300px;
+	height: 100%;
+	padding: 2rem;
+	transform: translateX(100%);
+	transition: var(--trans);
+}
+.navbar-collapse-rmw {
+	transform: translateX(0) !important;
+}
+#navbar-close-btn {
+	background: none;
+	color: white;
+	width: 35px;
+	height: 35px;
+	border-radius: 0.2rem;
+	font-size: 2rem;
+	transition: var(--trans);
+	position: absolute;
+	right: 1rem;
+	top: 2rem;
+	border: none;
+}
+#navbar-close-btn:hover {
+	background-color: white;
+	color: var(--green);
+}
+.navbar-nav {
+	margin-top: 5rem;
+}
+.navbar-item {
+	margin: 1.6rem 0;
+}
+.nav-link {
+	color: white;
+	font-size: 1.2rem;
+	transition: var(--trans);
+}
+.nav-link:hover {
+	opacity: 0.8;
+}
+/* change background when scrolling */
+.navbar-cng {
+	background-color: #fff;
+	-webkit-box-shadow: 0px 4px 5px 0px rgba(48, 48, 48, 0.2);
+	box-shadow: 0px 4px 5px 0px rgba(48, 48, 48, 0.2);
+	-webkit-transition: var(--trans);
+	-o-transition: var(--trans);
+	transition: var(--trans);
+}
+.navbar-cng .site-brand {
+	color: var(--dark);
+}
+.navbar-cng .site-brand span {
+	color: var(--green);
+}
+.navbar-cng #navbar-show-btn {
+	color: var(--green);
+}
