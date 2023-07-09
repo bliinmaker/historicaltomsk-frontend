@@ -48,7 +48,8 @@
 	width: 40px;
 	padding: 0.5rem;
 	border-radius: 50%;
-	background-color: #283b8b;
+	background-color: #fefefe;
+	border: 1px solid #515151;
 	cursor: pointer;
 	transition: background-color 0.2s ease-in-out;
 	position: absolute;
@@ -59,10 +60,11 @@
 }
 
 .hamburger:hover {
-	background-color: #2642af;
+	border: 1px solid #515151;
+	background-color: rgba(205, 201, 227, 0.3);
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 768px) {
 	.hamburger {
 		display: block;
 	}
