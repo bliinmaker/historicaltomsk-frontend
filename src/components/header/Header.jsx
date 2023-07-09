@@ -2,8 +2,10 @@ import fontawesome from '@fortawesome/fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useRef, useState } from 'react'
+import { QrReader } from 'react-qr-reader'
 import { Link } from 'react-router-dom'
 import { getHistPlaces } from '../../api/histPlace'
+
 import './Header.scss'
 
 fontawesome.library.add(faAngleRight)
@@ -15,6 +17,10 @@ export const Header = () => {
 	const [isFormTouched, setIsFormTouched] = useState(false)
 	const titleRef = useRef(null)
 	const areaRef = useRef(null)
+
+	const [isShowScanner, setIsShowScanner] = useState(false)
+
+	const [scanData, setScanData] = useState('')
 
 	useEffect(() => {
 		getHistPlaces({}).then(resp => {
@@ -45,6 +51,10 @@ export const Header = () => {
 		})
 	}
 
+	const handleClickScanQrBtn = () => {
+		setIsShowScanner(val => !val)
+	}
+
 	return (
 		<>
 			<header className='flex'>
@@ -59,6 +69,24 @@ export const Header = () => {
 						</p>
 					</div>
 					<div className='header-form'>
+						{scanData && <p>{scanData}</p>}
+						<button onClick={handleClickScanQrBtn}>
+							{isShowScanner ? 'Закрыть сканер' : 'Сканировать QR'}
+						</button>
+						{isShowScanner && (
+							<QrReader
+								onResult={(result, error) => {
+									if (!!result) {
+										setScanData(result?.text)
+									}
+
+									if (!!error) {
+										console.info(error)
+									}
+								}}
+								style={{ width: '100%' }}
+							/>
+						)}
 						<h2>Поиск по достопримечательностям:</h2>
 						<form className='flex' onSubmit={onSubmitHandler}>
 							<select
@@ -68,6 +96,7 @@ export const Header = () => {
 								placeholder='Название'
 								name='title'
 							>
+								<option></option>
 								{titles.map((title, id) => (
 									<option key={id} value={title}>
 										{title}
@@ -82,6 +111,7 @@ export const Header = () => {
 								name='area'
 								ref={areaRef}
 							>
+								<option></option>
 								{areas.map((area, id) => (
 									<option key={id} value={area}>
 										{area}

@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
+import QRCode from 'react-qr-code'
+import slug from 'slug'
 import { useParams } from 'react-router-dom'
 import { Rating } from 'react-simple-star-rating'
 import { getHistPlace } from '../../api/histPlace'
 import { getHistPlaceRating, rateHistPlace } from '../../api/rateHistPlace'
+import { API_HOST } from '../../config/config'
 import { Comments } from '../comments/Comments'
 import './HistPlace.scss'
-import { API_HOST } from '../../config/config'
 
 export const HistPlace = () => {
 	const [histPlace, setHistPlace] = useState(null)
@@ -35,8 +37,8 @@ export const HistPlace = () => {
 		// const isRated = localStorage.getItem('isRated')
 
 		// if (isRated !== 'true') {
-			rateHistPlace(histPlaceId, rating)
-			// localStorage.setItem('isRated', 'true')
+		rateHistPlace(histPlaceId, rating)
+		// localStorage.setItem('isRated', 'true')
 		// }
 	}
 
@@ -52,14 +54,19 @@ export const HistPlace = () => {
 				</div>
 				<div className='content'>
 					<div className='stars'>
-						<Rating
-							onClick={handleRating}
-							initialValue={rating}
-						/>
+						<Rating onClick={handleRating} initialValue={rating} />
 					</div>
 					<h3>{histPlace.title}</h3>
 					<span>{histPlace.area}</span>
 					<p>{histPlace.description}</p>
+					<div>
+						<QRCode
+							size={100}
+							style={{ height: 'auto', maxWidth: '30%', width: '30%' }}
+							value={slug(histPlace.description, ' ')}
+							viewBox={`0 0 100 100`}
+						/>
+					</div>
 				</div>
 			</div>
 			{histPlace && (
